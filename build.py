@@ -103,7 +103,7 @@ output = f"""#import "@preview/based:0.2.0": base64
 #set underline(offset: 6pt)
 #show link: it => text(size: {0.8*REM}pt, fill: rgb("229ED9"), underline(it))
 #let mono = body => text(size: {0.8*REM}pt, font: "DejaVu Sans Mono", body)
-#let telegram-link = [#box(block(image(base64.decode("{TELEGRAM_BASE64}"), height: {REM*16/18*0.85}pt), inset: -3pt)) #h(3pt) #link("https://t.me/yegorwebdev", mono(text(size: 13pt)[\@yegorwebdev]))]
+#let telegram-link = [#box(block(image(base64.decode("{TELEGRAM_BASE64}"), height: {REM*16/18*0.85}pt), inset: -3pt)) #h(3pt) #link("https://t.me/yegorwebdev", mono(text(size: 13pt)[#(sym.at)yegorwebdev]))]
 
 == Отчёт за `{period}`
 
