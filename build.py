@@ -175,6 +175,8 @@ if len(pdfs_from_done) > 0:
     if error_fromdone_typ:
         print('Произошла ошибка:')
         sys.exit(error_fromdone_typ)
+    else:
+        os.remove(os.path.join(root, 'from_done.typ'))
 
 print('Страница с кратким отчётом создана')
 
