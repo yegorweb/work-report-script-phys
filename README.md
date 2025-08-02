@@ -38,7 +38,7 @@
 ## Инструкция по использованию
 
 ### Подстройка шаблона под себя
-- Скачайте и распакуйте архив `Шаблон отчёта.zip` из [последнего релиза](https://github.com/yegorweb/work-report-script-phys/releases/latest)
+- Скачайте и распакуйте архив `template.zip` из [последнего релиза](https://github.com/yegorweb/work-report-script-phys/releases/latest)
 - Отредактируйте скрипт `build.py`, например в IDLE, который ставится вместе с Python:
     1. В переменных `MY_NAME` и `MY_NAME_IN_BANK` напишите своё имя
     2. В переменной `MY_PHONE_NUMBER` напишите свой номер телефона
