@@ -27,13 +27,17 @@ edit_images = []
 pdfs_from_done = []
 probes = []
 
+def exit():
+    input('Для выхода нажмите Enter...')
+    sys.exit()
+
 # Настройки
 try: settings = open(os.path.join(root, 'Настройки.txt'), 'r', encoding='utf-8', errors='Нет файла настроек').read().split('\n')
-except FileNotFoundError: sys.exit('Нет файла с настройками')
-except Exception as e: sys.exit(f'Ошибка: {e}')
+except FileNotFoundError: print('Нет файла с настройками'); exit()
+except Exception as e: print('Ошибка при чтении файла настроек:'); print(e); exit()
 
 try: period = settings[1]
-except: sys.exit('Нет периода')
+except: print('Нет периода в файле настроек (строка 2)'); exit()
 
 def get_setting(index):
     try: return settings[index]
@@ -161,8 +165,9 @@ result_output_typ = subprocess.run(shlex.split('typst compile output.typ "Отч
 error_output_typ = result_output_typ.stderr.decode('utf-8')
 
 if error_output_typ:
-    print('Произошла ошибка:')
-    sys.exit(error_output_typ)
+    print('Произошла ошибка при сборке первой страницы:')
+    print(error_output_typ)
+    exit()
 
 os.remove(os.path.join(root, 'output.typ'))
 
@@ -178,8 +183,9 @@ if len(pdfs_from_done) > 0:
     error_fromdone_typ = result_fromdone_typ.stderr.decode('utf-8')
 
     if error_fromdone_typ:
-        print('Произошла ошибка:')
-        sys.exit(error_fromdone_typ)
+        print('Произошла ошибка при сборке страницы с текстом "Документы с задачами для занятий или ДЗ, составленные из готового кода":')
+        print(error_fromdone_typ)
+        exit()
     else:
         os.remove(os.path.join(root, 'from_done.typ'))
 
@@ -203,3 +209,4 @@ if len(pdfs_from_done) > 0:
     os.remove(os.path.join(root, 'Из готовых.pdf'))
 
 print('Отчёт создан!')
+exit()
